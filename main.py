@@ -7,3 +7,5 @@
 
 #Simulación: Debe contener una lista de 10 operaciones 
 #(ej: 7 éxitos y 3 fallos provocados) para demostrar que el programa no se detiene
+
+#Hola Nicolas
