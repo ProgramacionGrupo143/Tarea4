@@ -5,3 +5,6 @@
 
 #Configuración de Logs: Definir aquí cómo se escribirá en el archivo
 #de texto externo cada vez que ocurra un error.
+
+
+#aksjkdadasdjjasld
