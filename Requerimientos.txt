@@ -1,0 +1,4 @@
+# Proyecto Fase 4 UNAD
+# Python 3.12 recomendado
+# No requiere librerías externas.
+# Tkinter incluido normalmente con Python.
