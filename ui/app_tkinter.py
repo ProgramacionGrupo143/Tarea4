@@ -12,5 +12,26 @@ class AppTkinter:
         self.ventana.title("Sistema de Reservas - Software")
         self.ventana.geometry("700x550")
 
-    def ejecutar(self)-> None:
+    def registar_clientes(self)-> None:
+        try:
+            pass
+        except Exception as error:
+            registrar_error(str(error))
+            messagebox.showerror("Error",str(error))
+
+    def crear_servicio(self)-> None:
+        try:
+            pass
+        except Exception as error:
+                registrar_error(str(error))
+                messagebox.showerror("Error",str(error))
+
+    def crear_reserva(self)-> None:
+        try:
+            pass
+        except Exception as error:
+                registrar_error(str(error))
+                messagebox.showerror("Error",str(error))
+
+        def ejecutar(self)-> None:
         self.ventana.mainloop()

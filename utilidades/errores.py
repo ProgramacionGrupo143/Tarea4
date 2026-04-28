@@ -7,3 +7,5 @@ class DatosInvalidosError(ErrorSistema):
 class ReservarInvalidaError(ErrorSistema):
     pass
 
+class ServicionNoDisponibleError(ErrorSistema):
+    pass
