@@ -4,7 +4,7 @@ from utilidades.errores import DatosInvalidosError
 
 class Servicio():
     def __init__(self,nombre: str,precio_base: float)-> None:
-        #REALIZAR : VALIDAR NOMBRE VACIO
+        #REALIZAR : VALIDAR NOMBRE vacio
         #RELIZAR: VALIDADR PRECIO MAYOR A CERO
         self.nombre : str = nombre
         self.precio_base : float = precio_base
