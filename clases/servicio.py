@@ -4,11 +4,14 @@ from utilidades.errores import DatosInvalidosError
 
 class Servicio():
     def __init__(self,nombre: str,precio_base: float)-> None:
-        #REALIZAR : VALIDAR NOMBRE vacio
-        #RELIZAR: VALIDADR PRECIO MAYOR A CERO
-        self.nombre : str = nombre
-        self.precio_base : float = precio_base
-        self.disponible : bool = True
+      
+        if not nombre or nombre.strip()=="":
+            raise DatosInvalidosError("El Nombre no puede estar vacio")
+    
+        if precio_base<=0:
+            self.nombre : str = nombre
+            self.precio_base : float = precio_base
+            self.disponible : bool = True
 
     @abstractmethod
     def calcular_costo(self,duracion_horas:int)-> float:
@@ -20,24 +23,23 @@ class Servicio():
 
 class ReservarSala(Servicio):
     def calcular_costo(self, duracion_horas) -> float:
-        #REALIZAR: CALCULAR COSTO DE RESERVA
-        return 0.0
+        return self.precio_base * duracion_horas
     
     def  describir(self) -> str:
-        return
+        return f"servicio de Reserva de Sala:{self.nombre}(Precio base:$-{self.precio_base})"
     
 class AlquilerEquipo(Servicio):
     def calcular_costo(self, duracion_horas) -> float:
-        #REALIZAR: CALCULAR COSTO DE RESERVA
-        return 0.0
+        return self.precio_base * duracion_horas
     
     def  describir(self) -> str:
-        return
+        return f"Alquiler de Equipo :{self.nombre}"
 
 class AsesoriaEspecializada(Servicio):
     def calcular_costo(self, duracion_horas) -> float:
         #REALIZAR: CALCULAR COSTO DE RESERVA
-        return 0.0
+        return self.precio_base * duracion_horas
     
     def  describir(self) -> str:
-        return
+        return f"Asesoria Especializada:{self.nombre}"
+    
