@@ -7,11 +7,11 @@ class Servicio():
       
         if not nombre or nombre.strip()=="":
             raise DatosInvalidosError("El Nombre no puede estar vacio")
-    
         if precio_base<=0:
-            self.nombre : str = nombre
-            self.precio_base : float = precio_base
-            self.disponible : bool = True
+            raise DatosInvalidosError("El precio base debe ser mayor que cero.")
+        self.nombre : str = nombre
+        self.precio_base : float = precio_base
+        self.disponible : bool = True
 
     @abstractmethod
     def calcular_costo(self,duracion_horas:int)-> float:
