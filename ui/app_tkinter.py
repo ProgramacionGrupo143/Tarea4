@@ -64,7 +64,7 @@ class AppTkinter:
     def crear_servicio_prueba(self)-> None:
         try:
             self.gestor.registar_servicio(ReservarSala("Sala principal",500000))
-            self.gestor.registar_servicio(AlquilerEquipo("Portatil Mac"),"30000")
+            self.gestor.registar_servicio(AlquilerEquipo("Portatil Mac",30000))
             self.gestor.registar_servicio(AsesoriaEspecializada("Asesoria Tencnica",80000))
 
             messagebox.showinfo("Exito","Servicio creado correctamente")

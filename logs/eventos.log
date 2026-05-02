@@ -1,0 +1,11 @@
+[ERROR] 2026-05-02 12:26:40.203335 - El correo no puede estar vacio
+[EVENTO] 2026-05-02 12:26:43.871045 - Servicio registrado: Sala principal
+[ERROR] 2026-05-02 12:26:43.871588 - Servicio.__init__() missing 1 required positional argument: 'precio_base'
+[ERROR] 2026-05-02 12:26:46.510089 - El correo no puede estar vacio
+[EVENTO] 2026-05-02 13:11:35.327119 - Servicio registrado: Sala principal
+[ERROR] 2026-05-02 13:11:35.327829 - Servicio.__init__() missing 1 required positional argument: 'precio_base'
+[EVENTO] 2026-05-02 13:14:12.971532 - Servicio registrado: Sala principal
+[ERROR] 2026-05-02 13:14:12.972131 - Servicio.__init__() missing 1 required positional argument: 'precio_base'
+[EVENTO] 2026-05-02 13:16:53.953562 - Servicio registrado: Sala principal
+[EVENTO] 2026-05-02 13:16:53.961963 - Servicio registrado: Portatil Mac
+[EVENTO] 2026-05-02 13:16:53.962277 - Servicio registrado: Asesoria Tencnica
