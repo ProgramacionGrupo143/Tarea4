@@ -10,15 +10,22 @@ class GestorSitema:
         self.reserva : list [Reserva] = []
 
     def registar_cliente(self,identificacion:str,nombre:str,correo:str)-> Cliente:
-        #REALIZAR : crear cliente , agregarlo a lista y retorna
-        pass
+        cliente: Cliente = Cliente(identificacion,nombre,correo)
+        self.clientes.append(cliente)
+        registrar_evento(f"Cliente registrado: {cliente.nombre}")
+        return cliente
+
 
     def registar_servicio(self,servicio:Servicio)-> None:
-        #REALIZAR : agregarlo a lista 
-        pass
+        self.servicios.append(servicio)
+        registrar_evento(f"Servicio registrado: {servicio.nombre}")
+
     def crear_reserva(self,cliente:Cliente,servicio:Servicio,duracion_horas: int)-> Reserva:
-        #REALIZAR : crear reserva , agregarlo a lista y retorna
-        pass
+        reserva: Reserva = Reserva(cliente, servicio, duracion_horas)
+        self.reservas.append(reserva)
+        registrar_evento(f"Reserva creada para cliente: {cliente.nombre}")
+        return reserva
+
     def listar_clientes(self)-> list[Cliente]:
         return self.clientes
     
