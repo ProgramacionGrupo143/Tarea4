@@ -5,11 +5,9 @@ from utilidades.errores import ReservarInvalidaError
 
 class Reserva:
     def __init__(self,clientes : Cliente,servicio: Servicio,duracion_horas: int)-> None:
-        #REALIZAR : Validar duracion mayor a cero
         if duracion_horas <= 0:
             raise ReservarInvalidaError("La duracion de horas debe ser mayor a cero.")
         
-        #REALIZAR : Validar servicio disponible
         if not servicio.disponible:
             raise ReservarInvalidaError("El servicio no está disponible para la reserva.")
         
@@ -20,7 +18,6 @@ class Reserva:
         self.costo : float = 0.0
 
     def  confirmar(self)-> None:
-        #REALIZAR : Confirmar reserva
         if self.estado == "Cancelada":
             raise ReservarInvalidaError("No se puede confirmar una reserva cancelada.")
         
@@ -28,7 +25,6 @@ class Reserva:
         self.costo = self.servicio.calcular_costo(self.duracion_horas)
         
     def cancelar(self)-> None:
-        #REALIZAR : cancelar  reserva
         if self.estado == "Confirmada":
             raise ReservarInvalidaError("No se puede cancelar una reserva confirmada.")
         
@@ -38,7 +34,6 @@ class Reserva:
         self.estado = "Cancelada"
 
     def mostrar_informacion(self)-> str:
-        #REALIZAR : retorna resumen  reserva
         return (
             f"Cliente: {self.cliente.nombre}\n"
             f"Servicio: {self.servicio.nombre}\n"

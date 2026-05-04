@@ -37,7 +37,6 @@ class AlquilerEquipo(Servicio):
 
 class AsesoriaEspecializada(Servicio):
     def calcular_costo(self, duracion_horas) -> float:
-        #REALIZAR: CALCULAR COSTO DE RESERVA
         return self.precio_base * duracion_horas
     
     def  describir(self) -> str:
