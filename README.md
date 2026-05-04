@@ -10,8 +10,7 @@ UNAD - Universidad Nacional Abierta y A Distancia
 - Miguel Angel Álvarez Martinez
 - Nicolas Esteban Ariza Castillo
 - Dayana Lizeth Gonzalez Romero
-- Nombre 4
-- Nombre 5
+
 
 ## Descripción
 Aplicación desarrollada en Python con interfaz Tkinter para gestionar clientes, servicios y reservas, aplicando programación orientada a objetos y manejo robusto de excepciones.
