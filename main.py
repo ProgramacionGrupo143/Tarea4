@@ -1,8 +1,8 @@
-from sistema.gestor_sistema import GestorSitema
+from sistema.gestor_sistema import GestorSistema
 from ui.app_tkinter import AppTkinter
 
 def main() -> None:
-    gestor: GestorSitema = GestorSitema()
+    gestor: GestorSistema = GestorSistema()
     app: AppTkinter = AppTkinter(gestor)
     app.ejecutar()
 

@@ -21,7 +21,7 @@ class Servicio():
     def describir(self)-> str:
         pass
 
-class ReservarSala(Servicio):
+class ReservaSala(Servicio):
     def calcular_costo(self, duracion_horas) -> float:
         return self.precio_base * duracion_horas
     

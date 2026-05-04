@@ -2,11 +2,13 @@ from utilidades.errores import DatosInvalidosError
 
 class Cliente:
     def __init__(self,identificacion : str,nombre:str,correo:str)-> None:
-        # REALIZAR : VALIDAR IDENTIFICACION
+        if not identificacion or identificacion.strip() == "":
+            raise DatosInvalidosError("La identificación no puede estar vacía.")
+
+        if not nombre or nombre.strip() == "":
+            raise DatosInvalidosError("El nombre no puede estar vacío.")
+
         
-        # REALIZAR : VALIDAR NOMBRE VACIO
-        
-        # REALIZA : VALIDAR CORREO VALIDO
         if not correo or correo.strip() == "":
             raise DatosInvalidosError("El correo no puede estar vacio")
         

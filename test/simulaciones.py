@@ -1,85 +1,119 @@
-from sistema.gestor_sistema import GestorSitema
-from clases.servicio import ReservarSala, AlquilerEquipo, AsesoriaEspecializada
-from utilidades.logger import registrar_error, registrar_evento
+from sistema.gestor_sistema import GestorSistema
+from clases.cliente import Cliente
+from clases.servicio import ReservaSala, AlquilerEquipo, AsesoriaEspecializada
+from clases.reserva import Reserva
 
-def ejecutar_simulaciones()-> None:
-    gestor : GestorSitema = GestorSitema()
+def ejecutar_simulaciones()-> list[str]:
+    resultados : list[str] = []
+    gestor : GestorSistema = GestorSistema()
 
     # simulacion # 1
     try:
-        cliente_1 = gestor.registar_cliente("1001", "Ana Pérez", "ana@email.com")
-        registrar_evento("Simulación 1 correcta: cliente válido.")
+        cliente : Cliente = gestor.registar_cliente("1001", "Ana Pérez", "ana@email.com")
+        resultados.append("Simulación 1 correcta: cliente válido.")
+        resultados.append(cliente.mostrar_informacion())
     except Exception as error:
-        registrar_error(f"Simulación 1 fallida: {error}")
+        resultados.append(f"Simulación 1 fallida: {error}")
 
 
-    # simulacion # 2
+    # Simulación 2: cliente sin identificación
     try:
-        gestor.registar_cliente("", "Carlos", "carlos@email.com")
+        cliente: Cliente = gestor.registrar_cliente("", "Carlos Ruiz", "carlos@email.com")
+        resultados.append("Simulación 2 fallida: se creó cliente sin identificación.")
+        resultados.append(cliente.mostrar_informacion())
     except Exception as error:
-        registrar_error(f"Simulación 2 correcta: error controlado por identificación vacía: {error}")
+        resultados.append(f"Simulación 2 correcta: cliente sin identificación rechazado: {error}")
 
-    # simulacion # 3
+    # Simulación 3: cliente sin nombre
     try:
-        gestor.registar_cliente("1003", "", "correo@email.com")
+        cliente: Cliente = gestor.registrar_cliente("1003", "", "laura@email.com")
+        resultados.append("Simulación 3 fallida: se creó cliente sin nombre.")
+        resultados.append(cliente.mostrar_informacion())
     except Exception as error:
-        registrar_error(f"Simulación 3 correcta: error controlado por nombre vacío: {error}")
+        resultados.append(f"Simulación 3 correcta: cliente sin nombre rechazado: {error}")
 
-
-    # simulacion # 4
+    # Simulación 4: cliente con correo inválido
     try:
-        gestor.registar_cliente("1004", "Laura", "correo_invalido")
+        cliente: Cliente = gestor.registrar_cliente("1004", "Laura Gómez", "correo_invalido")
+        resultados.append("Simulación 4 fallida: se creó cliente con correo inválido.")
+        resultados.append(cliente.mostrar_informacion())
     except Exception as error:
-        registrar_error(f"Simulación 4 correcta: error controlado por correo inválido: {error}")
+        resultados.append(f"Simulación 4 correcta: correo inválido rechazado: {error}")
 
-    # simulacion # 5
+    # Simulación 5: servicio válido
     try:
-        sala = ReservarSala("Sala Ejecutiva", 50000)
-        gestor.registrar_servicio(sala)
-        registrar_evento("Simulación 5 correcta: servicio válido.")
+        servicio: ReservaSala = ReservaSala("Sala Ejecutiva", 50000)
+        gestor.registrar_servicio(servicio)
+        resultados.append("Simulación 5 correcta: servicio válido creado.")
+        resultados.append(servicio.describir())
     except Exception as error:
-        registrar_error(f"Simulación 5 fallida: {error}")
+        resultados.append(f"Simulación 5 fallida: {error}")
 
-    # simulacion # 6
+    # Simulación 6: servicio con precio negativo
     try:
-        ReservaSala("Sala inválida", -10000)
+        servicio: ReservaSala = ReservaSala("Sala inválida", -10000)
+        gestor.registrar_servicio(servicio)
+        resultados.append("Simulación 6 fallida: se creó servicio con precio negativo.")
     except Exception as error:
-        registrar_error(f"Simulación 6 correcta: error controlado por precio negativo: {error}")
+        resultados.append(f"Simulación 6 correcta: servicio con precio negativo rechazado: {error}")
 
-    # simulacion # 7
+    # Simulación 7: reserva válida
     try:
-        equipo = AlquilerEquipo("Video Beam", 25000)
-        gestor.registar_servicio(equipo)
-        reserva = gestor.crear_reserva(cliente_1, equipo, 2)
-        registrar_evento(f"Simulación 7 correcta: reserva creada: {reserva.mostrar_informacion()}")
-    except Exception as error:
-        registrar_error(f"Simulación 7 fallida: {error}")
+        cliente: Cliente = gestor.registrar_cliente("2001", "Andrés Pérez", "andres@email.com")
+        servicio: AlquilerEquipo = AlquilerEquipo("Video Beam", 25000)
+        gestor.registrar_servicio(servicio)
 
-    # simulacion # 8
-    try:
-        asesoria = AsesoriaEspecializada("Asesoría Python", 90000)
-        gestor.registar_servicio(asesoria)
-        gestor.crear_reserva(cliente_1, asesoria, 0)
-    except Exception as error:
-        registrar_error(f"Simulación 8 correcta: error controlado por duración inválida: {error}")
+        reserva: Reserva = gestor.crear_reserva(cliente, servicio, 2)
+        reserva.confirmar()
 
-    # simulacion # 9
-    try:
-        sala_no_disponible = ReservarSala("Sala Ocupada", 60000)
-        sala_no_disponible.disponible = False
-        gestor.crear_reserva(cliente_1, sala_no_disponible, 2)
+        resultados.append("Simulación 7 correcta: reserva válida creada y confirmada.")
+        resultados.append(reserva.mostrar_informacion())
     except Exception as error:
-        registrar_error(f"Simulación 9 correcta: error controlado por servicio no disponible: {error}")
+        resultados.append(f"Simulación 7 fallida: {error}")
 
-    # simulacion # 10
+    # Simulación 8: reserva con duración cero
     try:
-        sala_final = ReservarSala("Sala Final", 70000)
-        reserva_final = gestor.crear_reserva(cliente_1, sala_final, 1)
-        reserva_final.cancelar()
-        reserva_final.confirmar()
+        cliente: Cliente = gestor.registrar_cliente("2002", "María López", "maria@email.com")
+        servicio: AsesoriaEspecializada = AsesoriaEspecializada("Asesoría Python", 90000)
+        gestor.registrar_servicio(servicio)
+
+        reserva: Reserva = gestor.crear_reserva(cliente, servicio, 0)
+        resultados.append("Simulación 8 fallida: se creó reserva con duración cero.")
+        resultados.append(reserva.mostrar_informacion())
     except Exception as error:
-        registrar_error(f"Simulación 10 correcta: error controlado al confirmar reserva cancelada: {error}")
+        resultados.append(f"Simulación 8 correcta: reserva con duración cero rechazada: {error}")
+
+    # Simulación 9: reserva con servicio no disponible
+    try:
+        cliente: Cliente = gestor.registrar_cliente("2003", "Camila Torres", "camila@email.com")
+        servicio: ReservaSala = ReservaSala("Sala Ocupada", 60000)
+        servicio.disponible = False
+
+        reserva: Reserva = gestor.crear_reserva(cliente, servicio, 2)
+        resultados.append("Simulación 9 fallida: se creó reserva con servicio no disponible.")
+        resultados.append(reserva.mostrar_informacion())
+    except Exception as error:
+        resultados.append(f"Simulación 9 correcta: servicio no disponible rechazado: {error}")
+
+    # Simulación 10: confirmar reserva cancelada
+    try:
+        cliente: Cliente = gestor.registrar_cliente("2004", "Sofía Ramírez", "sofia@email.com")
+        servicio: ReservaSala = ReservaSala("Sala Final", 70000)
+        gestor.registrar_servicio(servicio)
+
+        reserva: Reserva = gestor.crear_reserva(cliente, servicio, 1)
+        reserva.cancelar()
+        reserva.confirmar()
+
+        resultados.append("Simulación 10 fallida: se confirmó una reserva cancelada.")
+    except Exception as error:
+        resultados.append(f"Simulación 10 correcta: no se pudo confirmar reserva cancelada: {error}")
+
+    return resultados
 
 
 if __name__ == "__main__":
-    ejecutar_simulaciones()
+    mensajes: list[str] = ejecutar_simulaciones()
+
+    for mensaje in mensajes:
+        print(mensaje)

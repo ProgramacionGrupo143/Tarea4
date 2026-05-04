@@ -3,20 +3,20 @@ from clases.servicio import Servicio
 from clases.reserva import Reserva
 from utilidades.logger import registrar_evento
 
-class GestorSitema:
+class GestorSistema:
     def __init__(self) -> None:
         self.clientes : list[Cliente] = []
         self.servicios : list[Servicio] = []
-        self.reserva : list [Reserva] = []
+        self.reservas : list [Reserva] = []
 
-    def registar_cliente(self,identificacion:str,nombre:str,correo:str)-> Cliente:
+    def registrar_cliente(self,identificacion:str,nombre:str,correo:str)-> Cliente:
         cliente: Cliente = Cliente(identificacion,nombre,correo)
         self.clientes.append(cliente)
         registrar_evento(f"Cliente registrado: {cliente.nombre}")
         return cliente
 
 
-    def registar_servicio(self,servicio:Servicio)-> None:
+    def registrar_servicio(self,servicio:Servicio)-> None:
         self.servicios.append(servicio)
         registrar_evento(f"Servicio registrado: {servicio.nombre}")
 
@@ -33,4 +33,4 @@ class GestorSitema:
         return self.servicios
 
     def listar_reserva(self)-> list[Reserva]:
-        return self.reserva
+        return self.reservas

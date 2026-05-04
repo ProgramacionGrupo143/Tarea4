@@ -15,3 +15,33 @@
 [EVENTO] 2026-05-04 14:01:16.636956 - Servicio registrado: Sala principal
 [EVENTO] 2026-05-04 14:01:16.637346 - Servicio registrado: Portatil Mac
 [EVENTO] 2026-05-04 14:01:16.637744 - Servicio registrado: Asesoria Tencnica
+[ERROR] 2026-05-04 15:12:21.462218 - Error al crear servicios desde interfaz: 'GestorSistema' object has no attribute 'registrar_servicio'
+[EVENTO] 2026-05-04 15:13:21.546591 - Cliente registrado: Ana Pérez
+[EVENTO] 2026-05-04 15:13:21.549401 - Simulaciones ejecutadas desde la interfaz.
+[ERROR] 2026-05-04 15:17:14.154994 - Error al crear servicios desde interfaz: 'GestorSistema' object has no attribute 'registrar_servicio'
+[ERROR] 2026-05-04 15:17:54.885735 - Error al crear servicios desde interfaz: 'GestorSistema' object has no attribute 'registrar_servicio'
+[ERROR] 2026-05-04 15:20:53.312168 - Error al crear servicios desde interfaz: 'GestorSistema' object has no attribute 'registrar_servicio'
+[ERROR] 2026-05-04 15:24:07.448625 - Error al registrar cliente desde interfaz: 'GestorSistema' object has no attribute 'registrar_cliente'
+[EVENTO] 2026-05-04 15:26:27.922705 - Servicio registrado: Sala principal
+[EVENTO] 2026-05-04 15:26:27.923233 - Servicio registrado: Video Beam
+[EVENTO] 2026-05-04 15:26:27.923574 - Servicio registrado: Asesoría técnica
+[ERROR] 2026-05-04 15:26:39.488852 - Error al registrar cliente desde interfaz: El correo no puede estar vacio
+[EVENTO] 2026-05-04 15:27:00.903210 - Cliente registrado: miguel
+[EVENTO] 2026-05-04 15:36:20.368257 - Servicio registrado: Sala principal
+[EVENTO] 2026-05-04 15:36:20.368620 - Servicio registrado: Video Beam
+[EVENTO] 2026-05-04 15:36:20.369768 - Servicio registrado: Asesoría técnica
+[EVENTO] 2026-05-04 15:36:24.948409 - Cliente registrado: Carlos Ruiz
+[EVENTO] 2026-05-04 15:36:24.948981 - Cliente registrado: 
+[EVENTO] 2026-05-04 15:36:24.949632 - Servicio registrado: Sala Ejecutiva
+[EVENTO] 2026-05-04 15:36:24.950015 - Cliente registrado: Andrés Pérez
+[EVENTO] 2026-05-04 15:36:24.950309 - Servicio registrado: Video Beam
+[EVENTO] 2026-05-04 15:36:24.950587 - Reserva creada para cliente: Andrés Pérez
+[EVENTO] 2026-05-04 15:36:24.950955 - Cliente registrado: María López
+[EVENTO] 2026-05-04 15:36:24.951272 - Servicio registrado: Asesoría Python
+[EVENTO] 2026-05-04 15:36:24.951539 - Cliente registrado: Camila Torres
+[EVENTO] 2026-05-04 15:36:24.951772 - Cliente registrado: Sofía Ramírez
+[EVENTO] 2026-05-04 15:36:24.951992 - Servicio registrado: Sala Final
+[EVENTO] 2026-05-04 15:36:24.952200 - Reserva creada para cliente: Sofía Ramírez
+[EVENTO] 2026-05-04 15:36:24.959388 - Simulaciones ejecutadas desde la interfaz.
+[ERROR] 2026-05-04 15:36:33.024618 - Error al registrar cliente desde interfaz: El correo no puede estar vacio
+[ERROR] 2026-05-04 15:36:59.813848 - Error al registrar cliente desde interfaz: La identificación no puede estar vacía.
